@@ -16,7 +16,6 @@
 //= require_tree .
 
   function initMap(){
-      console.log("worked");
     var center = {lat: 39.500, lng: -98.350};
     var map = new google.maps.Map(
       document.getElementById('map'), {zoom: 4, center: center});
@@ -25,8 +24,6 @@
         var city = {lat: lat, lng: long};
         var marker = new google.maps.Marker({position: city, map: map}); 
       }
-
-      //plotPoint(47, -116);
 
       Rails.ajax({
         url: "/points.json",
@@ -39,22 +36,3 @@
         error: function(data) {}
     });
   }
-
-  /*let points;
-
-    Rails.ajax({
-        url: "/points.json",
-        type: "get",
-        success: function(points) { 
-            points.forEach(function(point) {                
-                plotPoint(point.latitude, point.longitude);
-            })
-        },
-        error: function(data) {}
-    });
-
-    plot = function(lat, long) {
-        //do plot stuff
-        plotPoint(lat, long);
-        console.log(lat + ' ' + long);
-    }*/
